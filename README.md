@@ -26,6 +26,8 @@ A Java console tool which uses at least 2 different public websites API to retri
 
 > java -Dapi=music -Dmusic=believe -jar target/movie-music-1.0-SNAPSHOT.jar
 
+
+**NOTE:** Please enter movie name and music title as one word without spaces in between. For example; -Dmovie=starwars:heavy_check_mark: -Dmovie=star wars:x:, -Dmusic=goodgirlgonebad:heavy_check_mark:  -Dmusic=good girl gone bad:x: 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 

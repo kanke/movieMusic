@@ -37,29 +37,30 @@ public class MovieMusicClientApplicationTest {
     public void shouldCallMusicServiceWithRightAPIParameter() throws Exception {
         System.setProperty("api", "music");
         MusicService musicService = Mockito.mock(MusicService.class);
-        String musicProperty  = System.getProperty("believe");
+        String musicProperty = System.getProperty("believe");
 
         musicService.getAlbums(musicProperty);
 
         verify(musicService, times(1)).getAlbums(musicProperty);
+
     }
 
     @Test
     public void shouldCallMovieServiceWithRightAPIParameter() throws Exception {
         System.setProperty("api", "movie");
         MovieService movieService = Mockito.mock(MovieService.class);
-        String movieProperty  = System.getProperty("harrypotter");
+        String movieProperty = System.getProperty("harrypotter");
 
         movieService.getMovies(movieProperty);
 
         verify(movieService, times(1)).getMovies(movieProperty);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWithUnknownAPIParameter() throws Exception {
         System.setProperty("api", "fake");
         MovieService movieService = Mockito.mock(MovieService.class);
-        String movieProperty  = System.getProperty("fake");
+        String movieProperty = System.getProperty("fake");
 
         application.run();
         movieService.getMovies(movieProperty);

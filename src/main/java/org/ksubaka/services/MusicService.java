@@ -6,18 +6,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 
 /**
  * Created by kanke on 23/07/2017.
@@ -39,7 +38,7 @@ public class MusicService {
 
     private MusicResultsDto musicResultsDto;
 
-    public MusicResultsDto getAlbums(String searchQuery) throws IOException {
+    public MusicResultsDto getAlbums(String searchQuery) throws Exception {
 
         try {
             URI uri = UriComponentsBuilder.fromHttpUrl(musicResource)
@@ -50,18 +49,24 @@ public class MusicService {
                     .queryParam("api_key", apiKey)
                     .queryParam("format", "json").build().encode().toUri();
 
-            Map response = restTemplate.getForObject(uri, HashMap.class);
-            Map results = (Map) response.get("results");
-            Map albumMatches = (Map) results.get("albummatches");
-            List albumMaps = (List) albumMatches.get("album");
-            List<Album> albums = createAlbums(albumMaps);
+            ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+            String body = response.getBody();
 
-            musicResultsDto = new MusicResultsDto();
-            musicResultsDto.setSearch(albums);
+            if (body.contains("Error")) {
+                throw new Exception("Music album not found!");
 
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Music object retrieved without errors");
+            } else {
+                Map responseMap = restTemplate.getForObject(uri, HashMap.class);
+                Map results = (Map) responseMap.get("results");
+                Map albumMatches = (Map) results.get("albummatches");
+                List albumMaps = (List) albumMatches.get("album");
+                List<Album> albums = createAlbums(albumMaps);
+
+                musicResultsDto = new MusicResultsDto();
+                musicResultsDto.setSearch(albums);
             }
+
+                LOGGER.debug("Music object retrieved without errors");
 
         } catch (HttpStatusCodeException exception) {
             System.err.println("Problem retrieving music albums from API: " + exception.getMessage());

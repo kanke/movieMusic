@@ -1,5 +1,6 @@
 package org.ksubaka;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.ksubaka.services.MovieService;
 import org.ksubaka.services.MusicService;
@@ -42,6 +43,11 @@ public class MovieMusicClientApplication implements CommandLineRunner {
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 
     @Override

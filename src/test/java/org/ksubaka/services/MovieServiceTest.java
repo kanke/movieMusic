@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 
@@ -69,6 +70,7 @@ public class MovieServiceTest {
 
         restTemplate.getForObject(uri, MovieResultsDto.class);
     }
+
 
     @AfterClass
     public static void afterClass() {

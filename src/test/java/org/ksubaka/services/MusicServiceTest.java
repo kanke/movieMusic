@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.ksubaka.MovieMusicClientApplication;
-import org.ksubaka.dtos.MovieResultsDto;
 import org.ksubaka.dtos.MusicResultsDto;
 import org.ksubaka.models.Album;
 
@@ -35,13 +35,11 @@ public class MusicServiceTest {
     @Autowired
     private MusicService musicService;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Value("${resource.music}")
     private String musicResource;
-
-    @Value("${lastfm.apikey}")
-    private String apiKey;
 
     @Autowired
     private RestTemplate restTemplate;

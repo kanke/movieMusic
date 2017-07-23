@@ -1,16 +1,17 @@
 package org.ksubaka.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.ksubaka.dtos.MovieResultsDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
 import java.net.URI;
 
 
@@ -32,10 +33,12 @@ public class MovieService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     private MovieResultsDto movieResults;
 
-
-    public MovieResultsDto getMovies(String searchQuery) throws IOException {
+    public MovieResultsDto getMovies(String searchQuery) throws Exception {
 
         try {
             URI uri = UriComponentsBuilder.fromHttpUrl(movieResource)
@@ -46,11 +49,16 @@ public class MovieService {
                     .queryParam("plot", "full")
                     .queryParam("i", "tt3896198").build().encode().toUri();
 
-            movieResults = restTemplate.getForObject(uri, MovieResultsDto.class);
+            ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+            String body = response.getBody();
 
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Movie object retrieved without errors");
+            if (body.contains("Error")) {
+                throw new Exception("Movie not found!");
+            } else {
+                movieResults = objectMapper.readValue(body, MovieResultsDto.class);
             }
+
+            LOGGER.debug("Movie object retrieved without errors");
 
         } catch (HttpStatusCodeException exception) {
             LOGGER.error("Problem retrieving movie results from API: ", exception.getMessage(), exception.getStatusCode());
