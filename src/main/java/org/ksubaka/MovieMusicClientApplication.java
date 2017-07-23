@@ -1,5 +1,6 @@
 package org.ksubaka;
 
+import org.apache.commons.lang3.StringUtils;
 import org.ksubaka.services.MovieService;
 import org.ksubaka.services.MusicService;
 import org.slf4j.Logger;
@@ -46,15 +47,19 @@ public class MovieMusicClientApplication implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        String apiProperty  = System.getProperty("api");
+        String apiProperty = System.getProperty("api");
         LOGGER.info("Application started with command-line arguments: {}. \n To kill this application, press Ctrl + C.", apiProperty);
 
         if (apiProperty.equals(musicProperty)) {
             String music = System.getProperty(musicProperty);
-            System.out.println(musicService.getAlbums(music));
+            if (StringUtils.isNotEmpty(music)) {
+                System.out.println(musicService.getAlbums(music));
+            }
         } else if (apiProperty.equals(movieProperty)) {
             String movie = System.getProperty(movieProperty);
-            System.out.println(movieService.getMovies(movie));
+            if (StringUtils.isNotEmpty(movie)) {
+                System.out.println(movieService.getMovies(movie));
+            }
         } else {
             throw new IllegalArgumentException("This application doesn't support unknown apis, please use movie or music");
         }

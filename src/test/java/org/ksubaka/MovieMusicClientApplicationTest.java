@@ -1,5 +1,6 @@
 package org.ksubaka;
 
+import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -41,7 +42,6 @@ public class MovieMusicClientApplicationTest {
         musicService.getAlbums(musicProperty);
 
         verify(musicService, times(1)).getAlbums(musicProperty);
-
     }
 
     @Test
@@ -53,7 +53,6 @@ public class MovieMusicClientApplicationTest {
         movieService.getMovies(movieProperty);
 
         verify(movieService, times(1)).getMovies(movieProperty);
-
     }
 
     @Test (expected = IllegalArgumentException.class)
@@ -66,7 +65,11 @@ public class MovieMusicClientApplicationTest {
         movieService.getMovies(movieProperty);
 
         verify(movieService, times(0)).getMovies(movieProperty);
-
     }
 
+    @AfterClass
+    public static void afterClass() {
+        System.clearProperty("music");
+        System.clearProperty("movie");
+    }
 }

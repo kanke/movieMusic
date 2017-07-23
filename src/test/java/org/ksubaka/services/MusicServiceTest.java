@@ -1,6 +1,7 @@
 package org.ksubaka.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ksubaka.MovieMusicClientApplication;
@@ -76,5 +77,11 @@ public class MusicServiceTest {
                 .queryParam("format", "json").build().encode().toUri();
 
         restTemplate.getForObject(uri, MusicResultsDto.class);
+    }
+
+    @AfterClass
+    public static void afterClass() {
+        System.clearProperty("api");
+        System.clearProperty("music");
     }
 }

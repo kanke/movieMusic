@@ -32,10 +32,11 @@ public class MovieService {
     @Autowired
     private RestTemplate restTemplate;
 
+    private MovieResultsDto movieResults;
+
 
     public MovieResultsDto getMovies(String searchQuery) throws IOException {
 
-        MovieResultsDto movieResults = null;
         try {
             URI uri = UriComponentsBuilder.fromHttpUrl(movieResource)
 

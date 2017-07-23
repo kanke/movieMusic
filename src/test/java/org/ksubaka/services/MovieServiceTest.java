@@ -1,5 +1,6 @@
 package org.ksubaka.services;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -69,4 +70,9 @@ public class MovieServiceTest {
         restTemplate.getForObject(uri, MovieResultsDto.class);
     }
 
+    @AfterClass
+    public static void afterClass() {
+        System.clearProperty("api");
+        System.clearProperty("movie");
+    }
 }

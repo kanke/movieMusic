@@ -37,8 +37,9 @@ public class MusicService {
     @Autowired
     private RestTemplate restTemplate;
 
+    private MusicResultsDto musicResultsDto;
+
     public MusicResultsDto getAlbums(String searchQuery) throws IOException {
-        MusicResultsDto musicResultsDto = null;
 
         try {
             URI uri = UriComponentsBuilder.fromHttpUrl(musicResource)

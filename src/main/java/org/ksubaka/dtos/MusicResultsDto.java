@@ -22,7 +22,6 @@ public class MusicResultsDto {
     @JsonProperty(value = "Search")
     List<Album> search;
 
-
     public String toString() {
         String results = "Albums" + "\r\n";
         for (Album album : search) {
