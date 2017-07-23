@@ -9,11 +9,11 @@ A Java console tool which uses at least 2 different public websites API to retri
 
 ##  Supported APIs ##
 
-> * -Dapi ---> music or movie parameter
+> * -Dapi :arrow_right: {music} or {movie} parameter
 
-> * -Dmusic  ----> -Dmusic = {album name}
+> * -Dmusic :arrow_right: -Dmusic = {albumname}
 
-> * -Dmovie ---> -Dmovie = {movie name}
+> * -Dmovie :arrow_right: -Dmovie = {moviename}
 
 ##  Sample usages ##
 
@@ -27,7 +27,7 @@ A Java console tool which uses at least 2 different public websites API to retri
 > java -Dapi=music -Dmusic=believe -jar target/movie-music-1.0-SNAPSHOT.jar
 
 
-**NOTE:** Please enter movie name and music title as one word without spaces in between. For example; -Dmovie=starwars:heavy_check_mark: -Dmovie=star wars:x:, -Dmusic=goodgirlgonebad:heavy_check_mark:  -Dmusic=good girl gone bad:x: 
+**NOTE:** Please enter movie name and music title as one word without spaces in between. For example; -Dmovie=starwars:heavy_check_mark: -Dmovie=star wars:x: -Dmusic=goodgirlgonebad:heavy_check_mark:  -Dmusic=good girl gone bad:x: 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
@@ -40,6 +40,7 @@ ________________________________________________________________________________
 > * Like most MVC frameworks, Spring follows the Convention over configuration software paradigm that attempts to replace lots of (tedious and repetitive) explicit code and/or configuration by simple naming and directory structure conventions.
 
 > * Spring has a well designed MVC framework which supports developments of robust and maintainable web applications in a simplified approach.
+
 
 ## When would you use automatic testing? ##
 You mean Automated testing?
@@ -81,5 +82,5 @@ In automated testing, test cases are executed with the assistance of tools, scri
               
 ## Once deployed, your users start whining about slow pages, timeouts, failed uploads, etc. As a developer, how would you handle this ? ##
 
-> *  I will look at logs first and write performance tests to diagnose the problem and understand what might be causing the timeouts and failed uploads. There could be many factors that can cause the above such as memory leak or the JVM has ran out of space, sudden increase in traffic etcetera. Performance testing will help measure the quality attributes of the system, such as scalability, reliability and resource usage.
+> *  I will look at the application logs first and write performance tests to diagnose the problem and understand what might be causing the timeouts and failed uploads. There could be many factors that can cause the above such as memory leak or the JVM has ran out of space, sudden increase in traffic etcetera. Performance testing will help measure the quality attributes of the system, such as scalability, reliability and resource usage.
 
