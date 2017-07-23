@@ -19,7 +19,7 @@ A Java console tool which uses at least 2 different public websites API to retri
 
 ###  To get information about a given movie ###
 
-> java -Dapi=movie -Dmusic=harry potter -jar target/movie-music-1.0-SNAPSHOT.jar
+> java -Dapi=movie -Dmovie=starwars -jar target/movie-music-1.0-SNAPSHOT.jar
 
 
 ###  To get information about a given album ###
