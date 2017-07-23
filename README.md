@@ -1,5 +1,5 @@
 #  About this application #
-A Java console tool which uses at least 2 different public websites API to retrieve informations about a given movie or music album.
+A Java console tool which uses at least 2 different public websites API to retrieve information about a given movie or music album.
 
 ##  To run this project ##
 
@@ -33,7 +33,7 @@ A Java console tool which uses at least 2 different public websites API to retri
 
 > * Spring promotes loose coupling and simplifies the use of dependency injection by providing a standard way of configuration and managing the reference to the created objects which leads to easier testing. 
    
-> * Like most MVC frameworks, Spring follow the Convention over configuration software paradigm that attempts to replace lots of (tedious and repetitive) explicit code and/or configuration by simple naming and directory structure conventions.
+> * Like most MVC frameworks, Spring follows the Convention over configuration software paradigm that attempts to replace lots of (tedious and repetitive) explicit code and/or configuration by simple naming and directory structure conventions.
 
 > * Spring has a well designed MVC framework which supports developments of robust and maintainable web applications in a simplified approach.
 
@@ -53,7 +53,7 @@ In automated testing, test cases are executed with the assistance of tools, scri
 
 > * Open SSH into linux box.
                           
-> * Update your apt-get package index:
+> * Update the apt-get package index:
 
                     sudo apt-get update
 > * Install the Java Development Kit package with apt-get:
@@ -77,5 +77,5 @@ In automated testing, test cases are executed with the assistance of tools, scri
               
 ## Once deployed, your users start whining about slow pages, timeouts, failed uploads, etc. As a developer, how would you handle this ? ##
 
-> *  Look at logs first and write performance tests to diagnose the problem and understand what might be causing the timeouts and failed uploads. There could be many factors that can cause the above such as memory leak or the JVM has ran out of space, sudden increase in traffic etcetera Performance testing will help measure the quality attributes of the system, such as scalability, reliability and resource usage
+> *  I will look at logs first and write performance tests to diagnose the problem and understand what might be causing the timeouts and failed uploads. There could be many factors that can cause the above such as memory leak or the JVM has ran out of space, sudden increase in traffic etcetera. Performance testing will help measure the quality attributes of the system, such as scalability, reliability and resource usage.
 
