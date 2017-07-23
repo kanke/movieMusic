@@ -47,14 +47,14 @@ public class MovieMusicClientApplication implements CommandLineRunner {
     public void run(String... strings) throws Exception {
 
         String apiProperty  = System.getProperty("api");
-        LOGGER.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", apiProperty);
+        LOGGER.info("Application started with command-line arguments: {}. \n To kill this application, press Ctrl + C.", apiProperty);
 
         if (apiProperty.equals(musicProperty)) {
             String music = System.getProperty(musicProperty);
             System.out.println(musicService.getAlbums(music));
         } else if (apiProperty.equals(movieProperty)) {
             String movie = System.getProperty(movieProperty);
-            System.out.println(movieService.getMovies(movie).toString());
+            System.out.println(movieService.getMovies(movie));
         } else {
             throw new IllegalArgumentException("This application doesn't support unknown apis, please use movie or music");
         }
